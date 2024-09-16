@@ -31,12 +31,6 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build Docker Compose
-      run: docker-compose build
-
-    - name: Start Docker Compose services
-      run: docker-compose up -d
-
     - name: Run Migrations
       run: docker-compose exec app python manage.py migrate
 
