@@ -31,8 +31,11 @@ jobs:
 #
 #    - name: Run Tests
 #      run: docker-compose exec app python manage.py test
-    - run: pip install ruff
-    - run: | 
+    - name: Install ruff
+      run: pip install ruff
+
+    - name: Run ruff
+      run: | 
         ruff check .
         ruff check --fix .
         ruff format .
