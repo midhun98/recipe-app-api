@@ -8,5 +8,3 @@ services:
       - "8001:8000"
     volumes:
       - .:/app
-    env_file:
-      - .env
