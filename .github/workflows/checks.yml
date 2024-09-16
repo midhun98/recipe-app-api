@@ -31,6 +31,8 @@ jobs:
 #
 #    - name: Run Tests
 #      run: docker-compose exec app python manage.py test
+    - name: Install Ruff
+      run: docker-compose exec pip install ruff
 
     - name: Run Ruff Check
       run: docker-compose exec app ruff check .
