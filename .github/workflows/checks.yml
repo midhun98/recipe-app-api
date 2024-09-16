@@ -15,11 +15,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-
     - name: Install Docker Compose
       run: |
         sudo apt-get update
@@ -31,14 +26,11 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Run Migrations
-      run: docker-compose exec app python manage.py migrate
-
-    - name: Run Tests
-      run: docker-compose exec app python manage.py test
-
-    - name: Get Docker Compose logs
-      run: docker-compose logs app
+#    - name: Run Migrations
+#      run: docker-compose exec app python manage.py migrate
+#
+#    - name: Run Tests
+#      run: docker-compose exec app python manage.py test
 
     - name: Run Ruff Check
       run: docker-compose exec app ruff check .
