@@ -34,8 +34,17 @@ jobs:
     - name: Build Docker Compose
       run: docker-compose build
 
+    - name: Start Docker Compose services
+      run: docker-compose up -d
+
+    - name: Run Migrations
+      run: docker-compose exec app python manage.py migrate
+
     - name: Run Tests
       run: docker-compose exec app python manage.py test
+
+    - name: Get Docker Compose logs
+      run: docker-compose logs app
 
     - name: Run Ruff Check
       run: docker-compose exec app ruff check .
